@@ -5,7 +5,9 @@ import { ConvexReactClient } from "convex/react";
 import { ConvexBetterAuthProvider } from "@convex-dev/better-auth/react";
 import { authClient } from "@/lib/auth-client";
 
-const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
+// Trim defensively: env values pasted into hosting dashboards sometimes carry a
+// stray leading/trailing newline or space, which the Convex client rejects.
+const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL?.trim();
 
 // A single client instance for the app. Guard against a missing URL so the app
 // renders a helpful message instead of crashing during initial setup.

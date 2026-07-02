@@ -6,5 +6,6 @@ import { nextJsHandler } from "@convex-dev/better-auth/nextjs";
  * session cookies work without cross-domain configuration.
  */
 export const { GET, POST } = nextJsHandler({
-  convexSiteUrl: process.env.NEXT_PUBLIC_CONVEX_SITE_URL,
+  // Trim in case the env value carries a stray newline/space from paste.
+  convexSiteUrl: process.env.NEXT_PUBLIC_CONVEX_SITE_URL?.trim(),
 });
